@@ -15,6 +15,7 @@
             margin: 0;
             overflow: hidden;
             position: relative;
+            flex-direction: column;
         }
 
         .container {
@@ -41,6 +42,13 @@
             font-size: 5em;
         }
 
+        .question {
+            font-size: 1.8em;
+            color: #ff1493;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
         .buttons {
             margin-top: 20px;
         }
@@ -63,7 +71,7 @@
         #noBtn {
             background-color: #ff6ec7;
             color: white;
-            pointer-events: auto;
+            pointer-events: none;
             position: absolute;
             animation: moveNoButton 5s infinite;
         }
@@ -82,6 +90,12 @@
             100% { top: -50px; opacity: 1; }
         }
 
+        @keyframes celebrationEffect {
+            0% { transform: scale(1); opacity: 0; }
+            50% { transform: scale(1.5); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
         /* Mobile responsiveness */
         @media (max-width: 600px) {
             h1 {
@@ -96,6 +110,22 @@
             .balloon:before {
                 font-size: 3.5em;
             }
+
+            .question {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Celebration (confetti/fireworks effect) */
+        .celebration {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            color: yellow;
+            display: none;
+            animation: celebrationEffect 1.5s ease-out infinite;
         }
 
     </style>
@@ -103,7 +133,11 @@
 <body>
 
 <div class="container">
-    <h1>Happy Valentine's Day!</h1>
+    <!-- Mocha Bear GIF -->
+    <img src="https://media.giphy.com/media/3o7aD2d0MmYfZaa0AO/giphy.gif" alt="Mocha Bear" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+
+    <!-- Question Text -->
+    <div class="question">Will you be my Valentine?</div>
 
     <!-- Balloon element -->
     <div class="balloon"></div>
@@ -112,12 +146,27 @@
         <button id="yesBtn">Yes!</button>
         <button id="noBtn">No!</button>
     </div>
+
+    <!-- Message area to display the result -->
+    <div id="message" style="margin-top: 20px; font-size: 1.5em; color: #ff1493;"></div>
+
+    <!-- Celebration Effect (Crackers/Confetti) -->
+    <div id="celebrationEffect" class="celebration">🎉🎆🎇</div>
 </div>
 
 <script>
     // Add functionality for "Yes" button
     document.getElementById('yesBtn').addEventListener('click', function() {
-        alert("Yay! You clicked YES! Happy Valentine's!");
+        // Display the message
+        document.getElementById('message').innerHTML = "I know you would, my panda 🐼";
+        
+        // Show the celebration effect
+        document.getElementById('celebrationEffect').style.display = 'block';
+        
+        // Hide the celebration after a few seconds
+        setTimeout(function() {
+            document.getElementById('celebrationEffect').style.display = 'none';
+        }, 3000);
     });
 </script>
 
