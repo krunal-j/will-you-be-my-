@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Fun!</title>
+    <style>
+        body {
+            background: #ffccd5;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .balloon {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: floatBalloons 5s ease-in-out infinite;
+        }
+
+        .balloon:before {
+            content: "🎈";
+            font-size: 5em;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            border: none;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+
+        #yesBtn {
+            background-color: #ff1493;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #ff6ec7;
+            color: white;
+            pointer-events: auto;
+            position: absolute;
+            animation: moveNoButton 5s infinite;
+        }
+
+        @keyframes moveNoButton {
+            0% { top: 10%; left: 10%; }
+            25% { top: 10%; left: 80%; }
+            50% { top: 70%; left: 80%; }
+            75% { top: 70%; left: 10%; }
+            100% { top: 10%; left: 10%; }
+        }
+
+        @keyframes floatBalloons {
+            0% { top: -50px; opacity: 1; }
+            50% { top: 20vh; opacity: 0.6; }
+            100% { top: -50px; opacity: 1; }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            button {
+                font-size: 1em;
+                padding: 12px 25px;
+            }
+
+            .balloon:before {
+                font-size: 3.5em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Happy Valentine's Day!</h1>
+
+    <!-- Balloon element -->
+    <div class="balloon"></div>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes!</button>
+        <button id="noBtn">No!</button>
+    </div>
+</div>
+
+<script>
+    // Add functionality for "Yes" button
+    document.getElementById('yesBtn').addEventListener('click', function() {
+        alert("Yay! You clicked YES! Happy Valentine's!");
+    });
+</script>
+
+</body>
+</html>
